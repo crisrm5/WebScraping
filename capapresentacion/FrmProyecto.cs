@@ -19,7 +19,7 @@ namespace capapresentacion
     public partial class FrmProyecto : Form
     {
         public FrmPrincipal frmparent;
-        string[] monitores = {};
+        string[] monitores = {"prueba","prueba2"};
         public List<string> Mena = new List<string>();
         public FrmProyecto()
         {
@@ -38,7 +38,7 @@ namespace capapresentacion
             foreach (var fi in di.GetFiles())
             {
                 System.IO.Path.GetFullPath(Application.ExecutablePath);
-                monitores.Append(fi.Name);
+                //monitores.Append(fi.Name);
                 Mena.Add(fi.Name);
                 Console.WriteLine(fi.Name);
             }
@@ -47,17 +47,10 @@ namespace capapresentacion
                 //dt.LoadDataRow(monitores[i], true); //Pass array object to LoadDataRow method
             }
 
-            dataListProyectos.DataSource = Mena ;
-            //dataListProyectos.DataBindings();
-            /*
-            Console.WriteLine();
 
-            Console.WriteLine("Search pattern *2* returns:");
-            foreach (var fi in di.GetFiles("*hola*"))
-            {
-                Process.Start("C:/Users/cromero/Desktop/Proyecto/WebScraping/Monitores" + fi.Name);
-                Console.WriteLine(fi.Name);
-            }*/
+            var result = Mena.Select(s => new { value = s }).ToList();
+            dataListProyectos.DataSource = result;
+
         }
 
         private void mensajeok(string mensaje)
