@@ -42,11 +42,11 @@ namespace capapresentacion
                 Mena.Add(fi.Name);
                 Console.WriteLine(fi.Name);
             }
-            for (int i = 0; i < monitores.Length; i++)
-            {
-                //dt.LoadDataRow(monitores[i], true); //Pass array object to LoadDataRow method
-            }
 
+            foreach (var fi in di.EnumerateFiles("*2*"))
+            {
+                Console.WriteLine(fi.Name);
+            }
 
             var result = Mena.Select(s => new { value = s }).ToList();
             dataListProyectos.DataSource = result;
@@ -188,7 +188,7 @@ namespace capapresentacion
                 if (opcion == DialogResult.OK)
                 {
                     int aux = 0;
-                    int id;
+                    string nombre;
                     string rpta = "";
                     foreach (DataGridViewRow row in dataListProyectos.Rows)
                     {
@@ -196,8 +196,18 @@ namespace capapresentacion
                         {
                             aux = 1;
 
-                            id = Convert.ToInt32(row.Cells[1].Value);
-                            rpta = NProyecto.eliminarproyecto(id);
+                            nombre = Convert.ToString(row.Cells[1].Value);
+                            //rpta = NProyecto.eliminarproyecto(id);
+                            Console.WriteLine(nombre);
+                            string pru = "";
+                            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
+                            foreach (var fi in di.EnumerateFiles("*nombre*"))
+                            {
+                                Console.WriteLine(fi.Name);
+                                 pru = "C:/Users/cromero/Desktop/Proyecto/WebScraping/Monitores/"+ fi.Name;
+                                System.IO.Path.GetFullPath(Application.pru);
+                            }
+                            //System.IO.File.Open("");
 
                             if (rpta.Equals("OK"))
                             {
