@@ -20,12 +20,7 @@ namespace capapresentacion
     public partial class FrmProyecto : Form
     {
         public FrmPrincipal frmparent;
-        public List<string> dataGridMonitores = new List<string>();
-        //Process myProcess;
-        List<(Process,string)> monitor = new List<(Process, string)>();
-        //ArrayList<Process> monitor = new ArrayList<Process>();
-        //ArrayList<Monitores> monitor;
-        //Monitores monitor = new Monitores();
+        public List<string> dataGridArrayMonitores = new List<string>();
         public FrmProyecto()
         {
             InitializeComponent();
@@ -43,20 +38,28 @@ namespace capapresentacion
 
         private void mostrarMonitores()
         {
-            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
-            //Console.WriteLine("No search pattern returns:");
+            DirectoryInfo di;
+            if (StaticMonitor.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
+            {
+                di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
+            }
+            else
+            {
+                di = new DirectoryInfo(StaticMonitor.rutaManual + "/");
+                dataGridArrayMonitores.Clear();
+            }
             DataTable dt = new DataTable();
-            
+
             foreach (var fi in di.GetFiles())
             {
                 System.IO.Path.GetFullPath(Application.ExecutablePath);
                 //monitores.Append(fi.Name);
-                dataGridMonitores.Add(fi.Name);
-                Console.WriteLine(fi.Name);
+                dataGridArrayMonitores.Add(fi.Name);
             }
 
 
-            var result = dataGridMonitores.Select(s => new { value = s }).ToList();
+
+            var result = dataGridArrayMonitores.Select(s => new { value = s }).ToList();
             dataListProyectos.DataSource = result;
             dataListProyectos.Columns[1].HeaderText = "Monitor";
         }
@@ -78,7 +81,7 @@ namespace capapresentacion
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-           this.FormClosed += new FormClosedEventHandler(cerrarX);
+            this.FormClosed += new FormClosedEventHandler(cerrarX);
         }
 
         private void FrmPrincipal_MouseDown(object sender, MouseEventArgs e)
@@ -92,7 +95,7 @@ namespace capapresentacion
             this.dataListProyectos.DataSource = NProyecto.mostrarproyectos();
             this.ocultarcolumnas();
             this.botonIniciarMonitor.Visible = true;
-           // this.lblTotal.Text = "Número de proyectos: " + Convert.ToString(dataListProyectos.Rows.Count);
+            // this.lblTotal.Text = "Número de proyectos: " + Convert.ToString(dataListProyectos.Rows.Count);
         }
 
         private void ocultarcolumnas()
@@ -105,9 +108,11 @@ namespace capapresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmDetalleProyecto detalleproyecto = new FrmDetalleProyecto();
-            frmparent.lanzarNuevoElemento(detalleproyecto);
-            detalleproyecto.setModo("CREACIÓN");
+            StaticMonitor.rutaManual = txtBuscarProyecto.Text;
+            mostrarMonitores();
+            //FrmDetalleProyecto detalleproyecto = new FrmDetalleProyecto();
+            //frmparent.lanzarNuevoElemento(detalleproyecto);
+            //detalleproyecto.setModo("CREACIÓN");
         }
 
         private void quitarBordes()
@@ -129,7 +134,7 @@ namespace capapresentacion
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);        
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
         /*fin del drag*/
 
 
@@ -215,16 +220,28 @@ namespace capapresentacion
                             nombre = Convert.ToString(row.Cells[1].Value);
 
                             string ruta = "";
-                            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
-                            foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                            if (StaticMonitor.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
-                                Console.WriteLine(fi.Name + "estamos dentro");
-                                ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
+                                DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
+                                foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                                {
+                                    Console.WriteLine(fi.Name + "estamos dentro");
+                                    ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
 
-                                StaticMonitor.monitor.Add((Process.Start(ruta),ruta));
+                                    StaticMonitor.monitor.Add((Process.Start(ruta), ruta));
 
+                                }
                             }
+                            else
+                            {
+                                DirectoryInfo di = new DirectoryInfo(@StaticMonitor.rutaManual);
+                                foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                                {
+                                    ruta = @StaticMonitor.rutaManual + "/" + fi.Name;
+                                    StaticMonitor.monitor.Add((Process.Start(ruta), ruta));
 
+                                }
+                            }
 
                         }
                     }
@@ -244,7 +261,7 @@ namespace capapresentacion
 
         private void botonApagar_Click(object sender, EventArgs e)
         {
-              try
+            try
             {
                 DialogResult opcion;
                 opcion = MessageBox.Show("¿Desea continuar?", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -252,7 +269,7 @@ namespace capapresentacion
                 {
                     int aux = 0;
                     string nombre;
-                    string rpta = "";
+
                     foreach (DataGridViewRow row in dataListProyectos.Rows)
                     {
                         if (Convert.ToBoolean(row.Cells[0].Value))
@@ -262,65 +279,50 @@ namespace capapresentacion
                             nombre = Convert.ToString(row.Cells[1].Value);
 
                             string ruta = "";
-                            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
-                            foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                            if (StaticMonitor.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
-                                Console.WriteLine(fi.Name + "estamos dentro");
-                                ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
 
-
-                                for (int i = 0; i < StaticMonitor.monitor.Count; i++)
+                                DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
+                                foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                 {
-                                    if (StaticMonitor.monitor[i].Item2.Equals(ruta))
-                                     {
-                                        StaticMonitor.monitor[i].Item1.CloseMainWindow();
-                                    };
+                                    ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
+
+                                    for (int i = 0; i < StaticMonitor.monitor.Count; i++)
+                                    {
+                                        if (StaticMonitor.monitor[i].Item2.Equals(ruta))
+                                        {
+                                            StaticMonitor.monitor[i].Item1.CloseMainWindow();
+                                        };
+                                    }
                                 }
-                                //Console.WriteLine(monitor.Ruta[i]);
-                                //Console.WriteLine(monitor.Ruta[0]+" esta es la ruta antes del if");
-                                //if (monitor.Ruta.Equals(pru))
-                                // {
-                                //     Console.WriteLine(pru + " estamos dentro del if");
-                                // };
-                                //monitor.MonitorEjecutandose[i].CloseMainWindow();
-                                //}
 
-                                /* if (monitor.Ruta.Equals(pru))
-                                 {
-                                     monitor.MonitorEjecutandose.CloseMainWindow();
-                                 }*/
-
-                                // myProcess.Close();
-                            }
-                            //System.IO.File.Open("");
-
-
-
-
-
-
-
-                            if (rpta.Equals("OK"))
-                            {
-                                this.mensajeok("Registro eliminado");
                             }
                             else
                             {
-                                //  this.mensajeerror("¡Ups!, Al parecer tienes tareas asignadas a este proyecto...");
-                                //  this.mensajeerror(rpta);
+                                aux = 1;
+
+                                nombre = Convert.ToString(row.Cells[1].Value);
+                                ruta = "";
+                                if (!StaticMonitor.rutaManual.Equals("")) //se pone la especificada
+                                {
+
+                                    DirectoryInfo di = new DirectoryInfo(@StaticMonitor.rutaManual);
+                                    foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                                    {
+                                        ruta = @StaticMonitor.rutaManual + "/" + fi.Name;
+
+                                        for (int i = 0; i < StaticMonitor.monitor.Count; i++)
+                                        {
+                                            if (StaticMonitor.monitor[i].Item2.Equals(ruta))
+                                            {
+                                                StaticMonitor.monitor[i].Item1.CloseMainWindow();
+                                            };
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
-                    if (aux < 1)
-                    {
-                        // MessageBox.Show("No haz seleccionado ningún proyecto", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    }
-                    //this.mostrarproyectos();
-                }
-                else
-                {
-                    this.botonIniciarMonitor.Enabled = false;
-                    this.cbCheckAll.Checked = false;
                 }
             }
             catch (Exception ex)
@@ -331,19 +333,19 @@ namespace capapresentacion
 
         private void cbCheckAll_CheckedChanged(object sender, EventArgs e)
         {
-            
-                if (this.cbCheckAll.Checked)
-                {
 
-                for (int i=0;i<dataListProyectos.Rows.Count;i++)
+            if (this.cbCheckAll.Checked)
+            {
+
+                for (int i = 0; i < dataListProyectos.Rows.Count; i++)
                 {
                     DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[i].Cells["Seleccionar"];
                     chkeliminar.Value = true;
                 }
 
             }
-                else
-                {
+            else
+            {
                 for (int i = 0; i < dataListProyectos.Rows.Count; i++)
                 {
                     DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[i].Cells["Seleccionar"];
@@ -351,7 +353,7 @@ namespace capapresentacion
                 }
 
             }
-            
+
         }
         /*PROCEDURES*/
     }

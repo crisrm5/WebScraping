@@ -15,8 +15,6 @@ namespace capapresentacion
     public partial class FrmScraper : Form
     {
         public List<string> arrayDataGrid = new List<string>();
-        //List<(Process, string)> monitor = new List<(Process, string)>();
-        //String rutaManual = "";
         public FrmScraper()
         {
             InitializeComponent();
@@ -26,19 +24,16 @@ namespace capapresentacion
 
         private void mostrarScrapers()
         {
-            
-               DirectoryInfo di;
+            DirectoryInfo di;
             if (StaticScraper.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
             {
-                  di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
-                  //di = new DirectoryInfo(@"..");
+                di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
             }
             else
             {
-                 di = new DirectoryInfo(StaticScraper.rutaManual + "/");
+                di = new DirectoryInfo(StaticScraper.rutaManual + "/");
                 arrayDataGrid.Clear();
             }
-            //Console.WriteLine("No search pattern returns:");
             DataTable dt = new DataTable();
 
             foreach (var fi in di.GetFiles())
@@ -46,7 +41,6 @@ namespace capapresentacion
                 System.IO.Path.GetFullPath(Application.ExecutablePath);
                 //monitores.Append(fi.Name);
                 arrayDataGrid.Add(fi.Name);
-                //Console.WriteLine(fi.Name);
             }
 
 
@@ -111,8 +105,7 @@ namespace capapresentacion
                             aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
-                            //rpta = NProyecto.eliminarproyecto(id);
-                            // Console.WriteLine(nombre);
+
                             string ruta = "";
                             if (StaticScraper.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
@@ -121,18 +114,9 @@ namespace capapresentacion
                                 {
                                     Console.WriteLine(fi.Name + "estamos dentro");
                                     ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
-                                    //System.IO.Path.GetFullPath(Application.pru);
-                                    //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
-                                    //monitor = new Monitores(Process.Start(ruta), ruta);
+
                                     StaticScraper.monitor.Add((Process.Start(ruta), ruta));
-                                    // monitor.Add();
 
-                                    //monitor.MonitorEjecutandose.Append<Process>(Process.Start(ruta));
-                                    //monitor.Ruta.Append<String>(ruta);
-                                    //monitor = new Monitores(Process.Start(pru),pru);
-
-                                    //myProcess = Process.Start(pru);
-                                    //System.Diagnostics.Process.Start(pru);
                                 }
                             }
                             else
@@ -140,7 +124,6 @@ namespace capapresentacion
                                 DirectoryInfo di = new DirectoryInfo(@StaticScraper.rutaManual);
                                 foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                 {
-                                    //Console.WriteLine(fi.Name + "estamos dentro");
                                     ruta = @StaticScraper.rutaManual + "/" + fi.Name;
                                     StaticScraper.monitor.Add((Process.Start(ruta), ruta));
 
@@ -173,7 +156,7 @@ namespace capapresentacion
                 {
                     int aux = 0;
                     string nombre;
-                    string rpta = "";
+
                     foreach (DataGridViewRow row in dataListScraper.Rows)
                     {
                         if (Convert.ToBoolean(row.Cells[0].Value))
@@ -181,8 +164,7 @@ namespace capapresentacion
                             aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
-                            //rpta = NProyecto.eliminarproyecto(id);
-                            //Console.WriteLine(nombre);
+
                             string ruta = "";
                             if (StaticScraper.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
@@ -190,7 +172,6 @@ namespace capapresentacion
                                 DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
                                 foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                 {
-                                    //Console.WriteLine(fi.Name + "estamos dentro");
                                     ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
 
                                     for (int i = 0; i < StaticScraper.monitor.Count; i++)
@@ -208,15 +189,13 @@ namespace capapresentacion
                                 aux = 1;
 
                                 nombre = Convert.ToString(row.Cells[1].Value);
-                                //Console.WriteLine(nombre);
-                                 ruta = "";
+                                ruta = "";
                                 if (!StaticScraper.rutaManual.Equals("")) //se pone la especificada
                                 {
 
                                     DirectoryInfo di = new DirectoryInfo(@StaticScraper.rutaManual);
                                     foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                     {
-                                        //Console.WriteLine(fi.Name + "estamos dentro");
                                         ruta = @StaticScraper.rutaManual + "/" + fi.Name;
 
                                         for (int i = 0; i < StaticScraper.monitor.Count; i++)

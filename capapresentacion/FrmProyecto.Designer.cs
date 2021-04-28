@@ -109,7 +109,7 @@ namespace capapresentacion
             this.txtBuscarProyecto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBuscarProyecto.Location = new System.Drawing.Point(39, 54);
             this.txtBuscarProyecto.Name = "txtBuscarProyecto";
-            this.txtBuscarProyecto.Size = new System.Drawing.Size(663, 20);
+            this.txtBuscarProyecto.Size = new System.Drawing.Size(637, 20);
             this.txtBuscarProyecto.TabIndex = 14;
             this.txtBuscarProyecto.TextChanged += new System.EventHandler(this.txtBuscarProyecto_TextChanged);
             // 
@@ -158,10 +158,10 @@ namespace capapresentacion
             this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(667, 131);
+            this.btnNuevo.Location = new System.Drawing.Point(679, 54);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(26, 28);
+            this.btnNuevo.Size = new System.Drawing.Size(23, 20);
             this.btnNuevo.TabIndex = 19;
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
