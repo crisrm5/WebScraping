@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NLogin.cs" />
     <Compile Include="NProyecto.cs" />
     <Compile Include="NTarea.cs" />
     <Compile Include="NTiempo.cs" />

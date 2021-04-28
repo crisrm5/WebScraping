@@ -31,7 +31,6 @@ namespace capapresentacion
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.widgetBoton = new System.Windows.Forms.Button();
             this.Tiempos = new FontAwesome.Sharp.IconButton();
             this.Tareas = new FontAwesome.Sharp.IconButton();
             this.Proyectos = new FontAwesome.Sharp.IconButton();
@@ -55,7 +54,6 @@ namespace capapresentacion
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.SystemColors.Control;
-            this.panelMenu.Controls.Add(this.widgetBoton);
             this.panelMenu.Controls.Add(this.Tiempos);
             this.panelMenu.Controls.Add(this.Tareas);
             this.panelMenu.Controls.Add(this.Proyectos);
@@ -65,24 +63,6 @@ namespace capapresentacion
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(200, 567);
             this.panelMenu.TabIndex = 0;
-            // 
-            // widgetBoton
-            // 
-            this.widgetBoton.BackColor = System.Drawing.Color.Transparent;
-            this.widgetBoton.BackgroundImage = global::capapresentacion.Properties.Resources.flechas;
-            this.widgetBoton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.widgetBoton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.widgetBoton.FlatAppearance.BorderSize = 0;
-            this.widgetBoton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.widgetBoton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.widgetBoton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.widgetBoton.ForeColor = System.Drawing.Color.Transparent;
-            this.widgetBoton.Location = new System.Drawing.Point(67, 474);
-            this.widgetBoton.Name = "widgetBoton";
-            this.widgetBoton.Size = new System.Drawing.Size(49, 43);
-            this.widgetBoton.TabIndex = 6;
-            this.widgetBoton.UseVisualStyleBackColor = false;
-            this.widgetBoton.Click += new System.EventHandler(this.widgetBoton_Click);
             // 
             // Tiempos
             // 
@@ -298,7 +278,6 @@ namespace capapresentacion
         private FontAwesome.Sharp.IconPictureBox iconoFormularioActual;
         private System.Windows.Forms.Button cerrar;
         private System.Windows.Forms.Button miminizar;
-        private System.Windows.Forms.Button widgetBoton;
         private System.Windows.Forms.Label txtnombreusuario;
     }
 }

@@ -40,7 +40,7 @@ namespace capapresentacion
         }
         public void setTecnico()
         {
-            lTecnico.Text = DLogin.tecnico;
+           // lTecnico.Text = DLogin.tecnico;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

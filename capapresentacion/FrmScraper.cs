@@ -16,6 +16,7 @@ namespace capapresentacion
     {
         public List<string> arrayDataGrid = new List<string>();
         List<(Process, string)> monitor = new List<(Process, string)>();
+        String rutaManual = "";
         public FrmScraper()
         {
             InitializeComponent();
@@ -25,7 +26,16 @@ namespace capapresentacion
 
         private void mostrarScrapers()
         {
-            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
+            DirectoryInfo di;
+            if (rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
+            {
+                 di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
+            }
+            else
+            {
+                 di = new DirectoryInfo(rutaManual+"/");
+                arrayDataGrid.Clear();
+            }
             //Console.WriteLine("No search pattern returns:");
             DataTable dt = new DataTable();
 
@@ -34,7 +44,7 @@ namespace capapresentacion
                 System.IO.Path.GetFullPath(Application.ExecutablePath);
                 //monitores.Append(fi.Name);
                 arrayDataGrid.Add(fi.Name);
-                Console.WriteLine(fi.Name);
+                //Console.WriteLine(fi.Name);
             }
 
 
@@ -102,35 +112,42 @@ namespace capapresentacion
                             //rpta = NProyecto.eliminarproyecto(id);
                             // Console.WriteLine(nombre);
                             string ruta = "";
-                            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
-                            foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                            if (rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
-                                Console.WriteLine(fi.Name + "estamos dentro");
-                                ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
-                                //System.IO.Path.GetFullPath(Application.pru);
-                                //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
-                                //monitor = new Monitores(Process.Start(ruta), ruta);
-                                monitor.Add((Process.Start(ruta), ruta));
-                                // monitor.Add();
+                                DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
+                                foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                                {
+                                    Console.WriteLine(fi.Name + "estamos dentro");
+                                    ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
+                                    //System.IO.Path.GetFullPath(Application.pru);
+                                    //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
+                                    //monitor = new Monitores(Process.Start(ruta), ruta);
+                                    monitor.Add((Process.Start(ruta), ruta));
+                                    // monitor.Add();
 
-                                //monitor.MonitorEjecutandose.Append<Process>(Process.Start(ruta));
-                                //monitor.Ruta.Append<String>(ruta);
-                                //monitor = new Monitores(Process.Start(pru),pru);
+                                    //monitor.MonitorEjecutandose.Append<Process>(Process.Start(ruta));
+                                    //monitor.Ruta.Append<String>(ruta);
+                                    //monitor = new Monitores(Process.Start(pru),pru);
 
-                                //myProcess = Process.Start(pru);
-                                //System.Diagnostics.Process.Start(pru);
+                                    //myProcess = Process.Start(pru);
+                                    //System.Diagnostics.Process.Start(pru);
+                                }
                             }
-                            //System.IO.File.Open("");
+                            else
+                            {
+                                DirectoryInfo di = new DirectoryInfo(@rutaManual);
+                                foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                                {
+                                    //Console.WriteLine(fi.Name + "estamos dentro");
+                                    ruta = @rutaManual + "/" + fi.Name;
 
+                                    monitor.Add((Process.Start(ruta), ruta));
 
-
-
-
-
-
+                                }
+                            }
                             if (rpta.Equals("OK"))
                             {
-                               // this.mensajeok("Registro eliminado");
+                                // this.mensajeok("Registro eliminado");
                             }
                             else
                             {
@@ -176,80 +193,67 @@ namespace capapresentacion
 
                             nombre = Convert.ToString(row.Cells[1].Value);
                             //rpta = NProyecto.eliminarproyecto(id);
-                            Console.WriteLine(nombre);
+                            //Console.WriteLine(nombre);
                             string ruta = "";
-                            DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
-                            foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                            if (rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
-                                Console.WriteLine(fi.Name + "estamos dentro");
-                                ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
-                                //System.IO.Path.GetFullPath(Application.pru);
-                                //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
-                                //System.Diagnostics.Process.Start(pru);
-                                //Console.WriteLine(monitor.MonitorEjecutandose.Length);
-                                //monitor[0].Item1.CloseMainWindow();
 
-
-
-
-                                for (int i = 0; i < monitor.Count; i++)
+                                DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
+                                foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                 {
-                                    if (monitor[i].Item2.Equals(ruta))
+                                    //Console.WriteLine(fi.Name + "estamos dentro");
+                                    ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
+
+                                    for (int i = 0; i < monitor.Count; i++)
                                     {
-                                        monitor[i].Item1.CloseMainWindow();
-                                    };
+                                        if (monitor[i].Item2.Equals(ruta))
+                                        {
+                                            monitor[i].Item1.CloseMainWindow();
+                                        };
+                                    }
                                 }
-                                //Console.WriteLine(monitor.Ruta[i]);
-                                //Console.WriteLine(monitor.Ruta[0]+" esta es la ruta antes del if");
-                                //if (monitor.Ruta.Equals(pru))
-                                // {
-                                //     Console.WriteLine(pru + " estamos dentro del if");
-                                // };
-                                //monitor.MonitorEjecutandose[i].CloseMainWindow();
-                                //}
 
-                                /* if (monitor.Ruta.Equals(pru))
-                                 {
-                                     monitor.MonitorEjecutandose.CloseMainWindow();
-                                 }*/
-
-                                // myProcess.Close();
-                            }
-                            //System.IO.File.Open("");
-
-
-
-
-
-
-
-                            if (rpta.Equals("OK"))
-                            {
-                                //this.mensajeok("Registro eliminado");
                             }
                             else
                             {
-                                //  this.mensajeerror("¡Ups!, Al parecer tienes tareas asignadas a este proyecto...");
-                                //  this.mensajeerror(rpta);
+                                aux = 1;
+
+                                nombre = Convert.ToString(row.Cells[1].Value);
+                                //Console.WriteLine(nombre);
+                                 ruta = "";
+                                if (!rutaManual.Equals("")) //se pone la especificada
+                                {
+
+                                    DirectoryInfo di = new DirectoryInfo(@rutaManual);
+                                    foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
+                                    {
+                                        //Console.WriteLine(fi.Name + "estamos dentro");
+                                        ruta = @rutaManual+"/" + fi.Name;
+
+                                        for (int i = 0; i < monitor.Count; i++)
+                                        {
+                                            if (monitor[i].Item2.Equals(ruta))
+                                            {
+                                                monitor[i].Item1.CloseMainWindow();
+                                            };
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
-                    if (aux < 1)
-                    {
-                        // MessageBox.Show("No haz seleccionado ningún proyecto", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    }
-                    //this.mostrarproyectos();
-                }
-                else
-                {
-                    this.botonIniciarMonitor.Enabled = false;
-                    this.cbCheckAll.Checked = false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            rutaManual = txtBuscarProyecto.Text;
+            mostrarScrapers();
         }
     }
 }
