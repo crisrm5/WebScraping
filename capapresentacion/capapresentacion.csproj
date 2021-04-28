@@ -108,6 +108,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StaticMonitor.cs" />
+    <Compile Include="StaticScraper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\capadatos\capadatos.csproj">

@@ -15,8 +15,8 @@ namespace capapresentacion
     public partial class FrmScraper : Form
     {
         public List<string> arrayDataGrid = new List<string>();
-        List<(Process, string)> monitor = new List<(Process, string)>();
-        String rutaManual = "";
+        //List<(Process, string)> monitor = new List<(Process, string)>();
+        //String rutaManual = "";
         public FrmScraper()
         {
             InitializeComponent();
@@ -26,14 +26,16 @@ namespace capapresentacion
 
         private void mostrarScrapers()
         {
-            DirectoryInfo di;
-            if (rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
+            
+               DirectoryInfo di;
+            if (StaticScraper.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
             {
-                 di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
+                  di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
+                  //di = new DirectoryInfo(@"..");
             }
             else
             {
-                 di = new DirectoryInfo(rutaManual+"/");
+                 di = new DirectoryInfo(StaticScraper.rutaManual + "/");
                 arrayDataGrid.Clear();
             }
             //Console.WriteLine("No search pattern returns:");
@@ -112,7 +114,7 @@ namespace capapresentacion
                             //rpta = NProyecto.eliminarproyecto(id);
                             // Console.WriteLine(nombre);
                             string ruta = "";
-                            if (rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
+                            if (StaticScraper.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
                                 DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
                                 foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
@@ -122,7 +124,7 @@ namespace capapresentacion
                                     //System.IO.Path.GetFullPath(Application.pru);
                                     //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
                                     //monitor = new Monitores(Process.Start(ruta), ruta);
-                                    monitor.Add((Process.Start(ruta), ruta));
+                                    StaticScraper.monitor.Add((Process.Start(ruta), ruta));
                                     // monitor.Add();
 
                                     //monitor.MonitorEjecutandose.Append<Process>(Process.Start(ruta));
@@ -135,32 +137,19 @@ namespace capapresentacion
                             }
                             else
                             {
-                                DirectoryInfo di = new DirectoryInfo(@rutaManual);
+                                DirectoryInfo di = new DirectoryInfo(@StaticScraper.rutaManual);
                                 foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                 {
                                     //Console.WriteLine(fi.Name + "estamos dentro");
-                                    ruta = @rutaManual + "/" + fi.Name;
-
-                                    monitor.Add((Process.Start(ruta), ruta));
+                                    ruta = @StaticScraper.rutaManual + "/" + fi.Name;
+                                    StaticScraper.monitor.Add((Process.Start(ruta), ruta));
 
                                 }
                             }
-                            if (rpta.Equals("OK"))
-                            {
-                                // this.mensajeok("Registro eliminado");
-                            }
-                            else
-                            {
-                                //  this.mensajeerror("¡Ups!, Al parecer tienes tareas asignadas a este proyecto...");
-                                //  this.mensajeerror(rpta);
-                            }
+
                         }
                     }
-                    if (aux < 1)
-                    {
-                        // MessageBox.Show("No haz seleccionado ningún proyecto", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    }
-                    //this.mostrarproyectos();
+
                 }
                 else
                 {
@@ -195,7 +184,7 @@ namespace capapresentacion
                             //rpta = NProyecto.eliminarproyecto(id);
                             //Console.WriteLine(nombre);
                             string ruta = "";
-                            if (rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
+                            if (StaticScraper.rutaManual.Equals(""))//si no se pone ruta se pone esta por defecto
                             {
 
                                 DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Scrapers");
@@ -204,11 +193,11 @@ namespace capapresentacion
                                     //Console.WriteLine(fi.Name + "estamos dentro");
                                     ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
 
-                                    for (int i = 0; i < monitor.Count; i++)
+                                    for (int i = 0; i < StaticScraper.monitor.Count; i++)
                                     {
-                                        if (monitor[i].Item2.Equals(ruta))
+                                        if (StaticScraper.monitor[i].Item2.Equals(ruta))
                                         {
-                                            monitor[i].Item1.CloseMainWindow();
+                                            StaticScraper.monitor[i].Item1.CloseMainWindow();
                                         };
                                     }
                                 }
@@ -221,20 +210,20 @@ namespace capapresentacion
                                 nombre = Convert.ToString(row.Cells[1].Value);
                                 //Console.WriteLine(nombre);
                                  ruta = "";
-                                if (!rutaManual.Equals("")) //se pone la especificada
+                                if (!StaticScraper.rutaManual.Equals("")) //se pone la especificada
                                 {
 
-                                    DirectoryInfo di = new DirectoryInfo(@rutaManual);
+                                    DirectoryInfo di = new DirectoryInfo(@StaticScraper.rutaManual);
                                     foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                                     {
                                         //Console.WriteLine(fi.Name + "estamos dentro");
-                                        ruta = @rutaManual+"/" + fi.Name;
+                                        ruta = @StaticScraper.rutaManual + "/" + fi.Name;
 
-                                        for (int i = 0; i < monitor.Count; i++)
+                                        for (int i = 0; i < StaticScraper.monitor.Count; i++)
                                         {
-                                            if (monitor[i].Item2.Equals(ruta))
+                                            if (StaticScraper.monitor[i].Item2.Equals(ruta))
                                             {
-                                                monitor[i].Item1.CloseMainWindow();
+                                                StaticScraper.monitor[i].Item1.CloseMainWindow();
                                             };
                                         }
                                     }
@@ -252,7 +241,7 @@ namespace capapresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            rutaManual = txtBuscarProyecto.Text;
+            StaticScraper.rutaManual = txtBuscarProyecto.Text;
             mostrarScrapers();
         }
     }

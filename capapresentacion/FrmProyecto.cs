@@ -213,51 +213,22 @@ namespace capapresentacion
                             aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
-                            //rpta = NProyecto.eliminarproyecto(id);
-                           // Console.WriteLine(nombre);
+
                             string ruta = "";
                             DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
                             foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                             {
                                 Console.WriteLine(fi.Name + "estamos dentro");
                                 ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
-                                //System.IO.Path.GetFullPath(Application.pru);
-                                //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
-                                //monitor = new Monitores(Process.Start(ruta), ruta);
-                                monitor.Add((Process.Start(ruta),ruta));
-                               // monitor.Add();
 
-                                //monitor.MonitorEjecutandose.Append<Process>(Process.Start(ruta));
-                                //monitor.Ruta.Append<String>(ruta);
-                                //monitor = new Monitores(Process.Start(pru),pru);
+                                StaticMonitor.monitor.Add((Process.Start(ruta),ruta));
 
-                                 //myProcess = Process.Start(pru);
-                                //System.Diagnostics.Process.Start(pru);
                             }
-                            //System.IO.File.Open("");
 
 
-
-
-
-
-
-                            if (rpta.Equals("OK"))
-                            {
-                                this.mensajeok("Registro eliminado");
-                            }
-                            else
-                            {
-                                //  this.mensajeerror("¡Ups!, Al parecer tienes tareas asignadas a este proyecto...");
-                                //  this.mensajeerror(rpta);
-                            }
                         }
                     }
-                    if (aux < 1)
-                    {
-                        // MessageBox.Show("No haz seleccionado ningún proyecto", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                    }
-                    //this.mostrarproyectos();
+
                 }
                 else
                 {
@@ -289,28 +260,20 @@ namespace capapresentacion
                             aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
-                            //rpta = NProyecto.eliminarproyecto(id);
-                            Console.WriteLine(nombre);
+
                             string ruta = "";
                             DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
                             foreach (var fi in di.EnumerateFiles("*" + nombre + "*"))
                             {
                                 Console.WriteLine(fi.Name + "estamos dentro");
                                 ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
-                                //System.IO.Path.GetFullPath(Application.pru);
-                                //Process.Start("C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\hola.txt");
-                                //System.Diagnostics.Process.Start(pru);
-                                //Console.WriteLine(monitor.MonitorEjecutandose.Length);
-                                //monitor[0].Item1.CloseMainWindow();
 
 
-
-
-                                for (int i = 0; i < monitor.Count; i++)
+                                for (int i = 0; i < StaticMonitor.monitor.Count; i++)
                                 {
-                                    if (monitor[i].Item2.Equals(ruta))
+                                    if (StaticMonitor.monitor[i].Item2.Equals(ruta))
                                      {
-                                        monitor[i].Item1.CloseMainWindow();
+                                        StaticMonitor.monitor[i].Item1.CloseMainWindow();
                                     };
                                 }
                                 //Console.WriteLine(monitor.Ruta[i]);
