@@ -36,10 +36,12 @@ namespace capapresentacion
             panelMenu.Controls.Add(panelIzquierdo);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             this.Text = string.Empty;
+            coloresPaneles();
+            
             //txtnombreusuario.Text = login.Usuario;
             //Console.WriteLine(Login.Usuario+" usuario");
             //this.txtnombreusuario.Text = "dsadasdsas";
-            
+
             //AbrirFormulario(new FrmProyectosl());
 
 
@@ -50,11 +52,26 @@ namespace capapresentacion
             //this.ControlBox = false;
         }
 
+        private void coloresPaneles()
+        {
+            panelMenu.BackColor = Color.FromArgb(31, 30, 68);
+            Proyectos.BackColor= Color.FromArgb(31, 30, 68); 
+            Tareas.BackColor= Color.FromArgb(31, 30, 68); 
+            Tiempos.BackColor= Color.FromArgb(31, 30, 68);
+            panelTitulo.BackColor = Color.FromArgb(26, 25, 62);
+            iconoFormularioActual.BackColor = Color.FromArgb(26, 25, 62);
+            panelFormulario.BackColor = Color.FromArgb(34, 33, 74);
+
+        }
 
         public struct RGBColors
         {
             public static Color color1 = Color.White;
             public static Color color2 = Color.FromArgb(249, 118, 176);
+            public static Color color3 = Color.FromArgb(253, 138, 114);
+            public static Color color4 = Color.FromArgb(95, 77, 221);
+            public static Color color5 = Color.FromArgb(249, 88, 155);
+            public static Color color6 = Color.FromArgb(24, 161, 251);
 
         }
 
@@ -87,7 +104,7 @@ namespace capapresentacion
                 DisableButton();
                 //Button
                 botonActual = (IconButton)senderBtn;
-                botonActual.BackColor = Color.Chocolate;
+                botonActual.BackColor = Color.FromArgb(37, 36, 81);
                 botonActual.ForeColor = color;
                 botonActual.TextAlign = ContentAlignment.MiddleCenter;
                 botonActual.IconColor = color;
@@ -109,7 +126,8 @@ namespace capapresentacion
         {
             if (botonActual != null)
             {
-                botonActual.BackColor = Color.DarkOrange;
+
+                botonActual.BackColor = Color.FromArgb(31, 30, 68);
                 botonActual.ForeColor = Color.Gainsboro;
                 botonActual.TextAlign = ContentAlignment.MiddleLeft;
                 botonActual.IconColor = Color.Gainsboro;
@@ -288,7 +306,7 @@ private void quitarBordes()
 
         private void Proyectos_Click(object sender, EventArgs e)
         {
-            ActivaBoton(sender, RGBColors.color1);
+            ActivaBoton(sender, RGBColors.color5);
             FrmProyecto proyecto = new FrmProyecto();
             proyecto.frmparent = this;
             AbrirFormulario(proyecto);
@@ -302,20 +320,20 @@ private void quitarBordes()
 
         private void Tareas_Click(object sender, EventArgs e)
         {
-            ActivaBoton(sender, RGBColors.color1);
-            FrmTarea tareas = new FrmTarea();
-            tareas.frmparent = this;
-            AbrirFormulario(tareas);
+            ActivaBoton(sender, RGBColors.color6);
+            //FrmTarea tareas = new FrmTarea();
+            //tareas.frmparent = this;
+            //AbrirFormulario(tareas);
             //AbrirFormulario(new FrmTarea());
         }
 
 
         private void Tiempos_Click(object sender, EventArgs e)
         {
-            ActivaBoton(sender, RGBColors.color1);
-            FrmTiempos tiempos = new FrmTiempos();
-            tiempos.frmparent = this;
-            AbrirFormulario(tiempos);
+            ActivaBoton(sender, RGBColors.color3);
+           // FrmTiempos tiempos = new FrmTiempos();
+            //tiempos.frmparent = this;
+            //AbrirFormulario(tiempos);
 
         }
 

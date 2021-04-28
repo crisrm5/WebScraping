@@ -54,7 +54,7 @@ namespace capapresentacion
             // 
             // panelMenu
             // 
-            this.panelMenu.BackColor = System.Drawing.Color.DarkOrange;
+            this.panelMenu.BackColor = System.Drawing.SystemColors.Control;
             this.panelMenu.Controls.Add(this.widgetBoton);
             this.panelMenu.Controls.Add(this.Tiempos);
             this.panelMenu.Controls.Add(this.Tareas);
@@ -130,13 +130,13 @@ namespace capapresentacion
             // 
             // Proyectos
             // 
-            this.Proyectos.BackColor = System.Drawing.Color.DarkOrange;
+            this.Proyectos.BackColor = System.Drawing.SystemColors.Control;
             this.Proyectos.Dock = System.Windows.Forms.DockStyle.Top;
             this.Proyectos.FlatAppearance.BorderSize = 0;
             this.Proyectos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Proyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Proyectos.ForeColor = System.Drawing.SystemColors.Control;
-            this.Proyectos.IconChar = FontAwesome.Sharp.IconChar.Yelp;
+            this.Proyectos.IconChar = FontAwesome.Sharp.IconChar.Play;
             this.Proyectos.IconColor = System.Drawing.Color.White;
             this.Proyectos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Proyectos.IconSize = 32;
@@ -175,7 +175,7 @@ namespace capapresentacion
             // 
             // panelTitulo
             // 
-            this.panelTitulo.BackColor = System.Drawing.Color.Chocolate;
+            this.panelTitulo.BackColor = System.Drawing.SystemColors.Control;
             this.panelTitulo.Controls.Add(this.txtnombreusuario);
             this.panelTitulo.Controls.Add(this.miminizar);
             this.panelTitulo.Controls.Add(this.cerrar);
@@ -228,7 +228,7 @@ namespace capapresentacion
             // 
             // iconoFormularioActual
             // 
-            this.iconoFormularioActual.BackColor = System.Drawing.Color.Chocolate;
+            this.iconoFormularioActual.BackColor = System.Drawing.SystemColors.Control;
             this.iconoFormularioActual.ForeColor = System.Drawing.Color.Snow;
             this.iconoFormularioActual.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconoFormularioActual.IconColor = System.Drawing.Color.Snow;

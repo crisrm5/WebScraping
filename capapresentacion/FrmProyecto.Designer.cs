@@ -29,15 +29,17 @@ namespace capapresentacion
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProyecto));
             this.label_añadir = new System.Windows.Forms.Label();
             this.panelRecuadro = new System.Windows.Forms.Panel();
             this.dataListProyectos = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnEliminarProyecto = new System.Windows.Forms.Button();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.cbEliminar = new System.Windows.Forms.CheckBox();
             this.txtBuscarProyecto = new System.Windows.Forms.TextBox();
+            this.botonIniciarMonitor = new System.Windows.Forms.Button();
+            this.botonApagar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelRecuadro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListProyectos)).BeginInit();
             this.SuspendLayout();
@@ -45,11 +47,12 @@ namespace capapresentacion
             // label_añadir
             // 
             this.label_añadir.AutoSize = true;
-            this.label_añadir.Location = new System.Drawing.Point(150, 146);
+            this.label_añadir.ForeColor = System.Drawing.SystemColors.Control;
+            this.label_añadir.Location = new System.Drawing.Point(135, 146);
             this.label_añadir.Name = "label_añadir";
-            this.label_añadir.Size = new System.Drawing.Size(37, 13);
+            this.label_añadir.Size = new System.Drawing.Size(45, 13);
             this.label_añadir.TabIndex = 21;
-            this.label_añadir.Text = "Añadir";
+            this.label_añadir.Text = "Detener";
             // 
             // panelRecuadro
             // 
@@ -95,7 +98,7 @@ namespace capapresentacion
             this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(190, 138);
+            this.btnNuevo.Location = new System.Drawing.Point(360, 139);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(26, 28);
@@ -103,39 +106,15 @@ namespace capapresentacion
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnEliminarProyecto
-            // 
-            this.btnEliminarProyecto.BackColor = System.Drawing.Color.White;
-            this.btnEliminarProyecto.BackgroundImage = global::capapresentacion.Properties.Resources.DeleteButton;
-            this.btnEliminarProyecto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnEliminarProyecto.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnEliminarProyecto.FlatAppearance.BorderSize = 0;
-            this.btnEliminarProyecto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarProyecto.Location = new System.Drawing.Point(104, 138);
-            this.btnEliminarProyecto.Margin = new System.Windows.Forms.Padding(0);
-            this.btnEliminarProyecto.Name = "btnEliminarProyecto";
-            this.btnEliminarProyecto.Size = new System.Drawing.Size(32, 28);
-            this.btnEliminarProyecto.TabIndex = 18;
-            this.btnEliminarProyecto.UseVisualStyleBackColor = false;
-            this.btnEliminarProyecto.Click += new System.EventHandler(this.btnEliminarProyecto_Click_1);
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(567, 146);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(111, 13);
-            this.lblTotal.TabIndex = 17;
-            this.lblTotal.Text = "Número de proyectos:";
-            // 
             // cbEliminar
             // 
             this.cbEliminar.AutoSize = true;
-            this.cbEliminar.Location = new System.Drawing.Point(39, 146);
+            this.cbEliminar.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbEliminar.Location = new System.Drawing.Point(660, 119);
             this.cbEliminar.Name = "cbEliminar";
-            this.cbEliminar.Size = new System.Drawing.Size(62, 17);
+            this.cbEliminar.Size = new System.Drawing.Size(82, 17);
             this.cbEliminar.TabIndex = 16;
-            this.cbEliminar.Text = "Eliminar";
+            this.cbEliminar.Text = "Seleccionar";
             this.cbEliminar.UseVisualStyleBackColor = true;
             this.cbEliminar.CheckedChanged += new System.EventHandler(this.cbEliminar_CheckedChanged_1);
             // 
@@ -148,17 +127,56 @@ namespace capapresentacion
             this.txtBuscarProyecto.TabIndex = 14;
             this.txtBuscarProyecto.TextChanged += new System.EventHandler(this.txtBuscarProyecto_TextChanged);
             // 
+            // botonIniciarMonitor
+            // 
+            this.botonIniciarMonitor.BackColor = System.Drawing.Color.Transparent;
+            this.botonIniciarMonitor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("botonIniciarMonitor.BackgroundImage")));
+            this.botonIniciarMonitor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.botonIniciarMonitor.FlatAppearance.BorderSize = 0;
+            this.botonIniciarMonitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonIniciarMonitor.Location = new System.Drawing.Point(77, 137);
+            this.botonIniciarMonitor.Name = "botonIniciarMonitor";
+            this.botonIniciarMonitor.Size = new System.Drawing.Size(34, 32);
+            this.botonIniciarMonitor.TabIndex = 28;
+            this.botonIniciarMonitor.UseVisualStyleBackColor = false;
+            this.botonIniciarMonitor.Click += new System.EventHandler(this.botonIniciarMonitor_Click);
+            // 
+            // botonApagar
+            // 
+            this.botonApagar.BackColor = System.Drawing.Color.Transparent;
+            this.botonApagar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("botonApagar.BackgroundImage")));
+            this.botonApagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.botonApagar.FlatAppearance.BorderSize = 0;
+            this.botonApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonApagar.Location = new System.Drawing.Point(186, 136);
+            this.botonApagar.Name = "botonApagar";
+            this.botonApagar.Size = new System.Drawing.Size(41, 32);
+            this.botonApagar.TabIndex = 29;
+            this.botonApagar.UseVisualStyleBackColor = false;
+            this.botonApagar.Click += new System.EventHandler(this.botonApagar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(36, 146);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Iniciar";
+            // 
             // FrmProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(799, 488);
+            this.BackColor = System.Drawing.Color.MidnightBlue;
+            this.ClientSize = new System.Drawing.Size(783, 488);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.botonApagar);
+            this.Controls.Add(this.botonIniciarMonitor);
             this.Controls.Add(this.label_añadir);
             this.Controls.Add(this.panelRecuadro);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.btnEliminarProyecto);
-            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.cbEliminar);
             this.Controls.Add(this.txtBuscarProyecto);
             this.Name = "FrmProyecto";
@@ -177,9 +195,10 @@ namespace capapresentacion
         private System.Windows.Forms.DataGridView dataListProyectos;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button btnEliminarProyecto;
-        private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.CheckBox cbEliminar;
         private System.Windows.Forms.TextBox txtBuscarProyecto;
+        private System.Windows.Forms.Button botonIniciarMonitor;
+        private System.Windows.Forms.Button botonApagar;
+        private System.Windows.Forms.Label label1;
     }
 }
