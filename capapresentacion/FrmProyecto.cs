@@ -20,7 +20,6 @@ namespace capapresentacion
     public partial class FrmProyecto : Form
     {
         public FrmPrincipal frmparent;
-        string[] monitores = {"prueba","prueba2"};
         public List<string> Mena = new List<string>();
         //Process myProcess;
         List<(Process,string)> monitor = new List<(Process, string)>();
@@ -104,7 +103,7 @@ namespace capapresentacion
             this.dataListProyectos.Columns[0].Visible = false;
             this.dataListProyectos.Columns[1].Visible = false;
             this.botonIniciarMonitor.Enabled = false;
-            this.cbEliminar.Checked = false;
+            this.cbCheckAll.Checked = false;
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -136,25 +135,13 @@ namespace capapresentacion
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);        
         /*fin del drag*/
 
-        private void cbEliminar_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (this.cbEliminar.Checked)
-            {
-                this.dataListProyectos.Columns[0].Visible = true;
-                this.botonIniciarMonitor.Enabled = true;
-            }
-            else
-            {
-                this.dataListProyectos.Columns[0].Visible = false;
-                this.botonIniciarMonitor.Enabled = false;
-            }
-        }
+
 
         private void dataListProyectos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dataListProyectos.Columns["Eliminar"].Index)
+            if (e.ColumnIndex == dataListProyectos.Columns["Seleccionar"].Index)
             {
-                DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[e.RowIndex].Cells["Eliminar"];
+                DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[e.RowIndex].Cells["Seleccionar"];
                 chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
             }
         }
@@ -271,7 +258,7 @@ namespace capapresentacion
                 else
                 {
                     this.botonIniciarMonitor.Enabled = false;
-                    this.cbEliminar.Checked = false;
+                    this.cbCheckAll.Checked = false;
                 }
             }
             catch (Exception ex)
@@ -311,6 +298,10 @@ namespace capapresentacion
                                 //System.Diagnostics.Process.Start(pru);
                                 //Console.WriteLine(monitor.MonitorEjecutandose.Length);
                                 //monitor[0].Item1.CloseMainWindow();
+
+
+
+
                                 for (int i = 0; i < monitor.Count; i++)
                                 {
                                     if (monitor[i].Item2.Equals(ruta))
@@ -362,13 +353,47 @@ namespace capapresentacion
                 else
                 {
                     this.botonIniciarMonitor.Enabled = false;
-                    this.cbEliminar.Checked = false;
+                    this.cbCheckAll.Checked = false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void cbCheckAll_CheckedChanged(object sender, EventArgs e)
+        {
+            
+                if (this.cbCheckAll.Checked)
+                {
+                //Console.WriteLine();
+
+                for (int i=0;i<dataListProyectos.Rows.Count;i++)
+                {
+                    DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[i].Cells["Seleccionar"];
+                    chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
+                }
+                /*
+                if (e.ColumnIndex == dataListProyectos.Columns["Seleccionar"].Index)
+                {
+                    DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[e.RowIndex].Cells["Seleccionar"];
+                    chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
+                }*/
+                //this.dataListProyectos.Columns[0].Visible = true;
+                //this.botonIniciarMonitor.Enabled = true;
+            }
+                else
+                {
+                for (int i = 0; i < dataListProyectos.Rows.Count; i++)
+                {
+                    DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[i].Cells["Seleccionar"];
+                    chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
+                }
+                //this.dataListProyectos.Columns[0].Visible = false;
+                // this.botonIniciarMonitor.Enabled = false;
+            }
+            
         }
         /*PROCEDURES*/
     }

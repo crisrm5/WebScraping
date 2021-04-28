@@ -84,7 +84,6 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Monitores.cs" />
     <Compile Include="Widget.cs">
       <SubType>Form</SubType>
     </Compile>

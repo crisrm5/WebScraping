@@ -33,13 +33,13 @@ namespace capapresentacion
             this.label_añadir = new System.Windows.Forms.Label();
             this.panelRecuadro = new System.Windows.Forms.Panel();
             this.dataListProyectos = new System.Windows.Forms.DataGridView();
-            this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.cbEliminar = new System.Windows.Forms.CheckBox();
+            this.cbCheckAll = new System.Windows.Forms.CheckBox();
             this.txtBuscarProyecto = new System.Windows.Forms.TextBox();
             this.botonIniciarMonitor = new System.Windows.Forms.Button();
             this.botonApagar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panelRecuadro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListProyectos)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +48,7 @@ namespace capapresentacion
             // 
             this.label_añadir.AutoSize = true;
             this.label_añadir.ForeColor = System.Drawing.SystemColors.Control;
-            this.label_añadir.Location = new System.Drawing.Point(135, 146);
+            this.label_añadir.Location = new System.Drawing.Point(232, 147);
             this.label_añadir.Name = "label_añadir";
             this.label_añadir.Size = new System.Drawing.Size(45, 13);
             this.label_añadir.TabIndex = 21;
@@ -71,7 +71,7 @@ namespace capapresentacion
             this.dataListProyectos.BackgroundColor = System.Drawing.Color.White;
             this.dataListProyectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListProyectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Eliminar});
+            this.Seleccionar});
             this.dataListProyectos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataListProyectos.Location = new System.Drawing.Point(0, 0);
             this.dataListProyectos.Name = "dataListProyectos";
@@ -82,15 +82,6 @@ namespace capapresentacion
             this.dataListProyectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListProyectos_CellContentClick_1);
             this.dataListProyectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListProyectos_CellDoubleClick);
             // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.MinimumWidth = 2;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // btnNuevo
             // 
             this.btnNuevo.BackgroundImage = global::capapresentacion.Properties.Resources.addNew;
@@ -98,7 +89,7 @@ namespace capapresentacion
             this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(360, 139);
+            this.btnNuevo.Location = new System.Drawing.Point(667, 131);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(26, 28);
@@ -106,17 +97,17 @@ namespace capapresentacion
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // cbEliminar
+            // cbCheckAll
             // 
-            this.cbEliminar.AutoSize = true;
-            this.cbEliminar.ForeColor = System.Drawing.SystemColors.Control;
-            this.cbEliminar.Location = new System.Drawing.Point(660, 119);
-            this.cbEliminar.Name = "cbEliminar";
-            this.cbEliminar.Size = new System.Drawing.Size(82, 17);
-            this.cbEliminar.TabIndex = 16;
-            this.cbEliminar.Text = "Seleccionar";
-            this.cbEliminar.UseVisualStyleBackColor = true;
-            this.cbEliminar.CheckedChanged += new System.EventHandler(this.cbEliminar_CheckedChanged_1);
+            this.cbCheckAll.AutoSize = true;
+            this.cbCheckAll.ForeColor = System.Drawing.SystemColors.Control;
+            this.cbCheckAll.Location = new System.Drawing.Point(39, 147);
+            this.cbCheckAll.Name = "cbCheckAll";
+            this.cbCheckAll.Size = new System.Drawing.Size(70, 17);
+            this.cbCheckAll.TabIndex = 16;
+            this.cbCheckAll.Text = "Check all";
+            this.cbCheckAll.UseVisualStyleBackColor = true;
+            this.cbCheckAll.CheckedChanged += new System.EventHandler(this.cbCheckAll_CheckedChanged);
             // 
             // txtBuscarProyecto
             // 
@@ -134,7 +125,7 @@ namespace capapresentacion
             this.botonIniciarMonitor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.botonIniciarMonitor.FlatAppearance.BorderSize = 0;
             this.botonIniciarMonitor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonIniciarMonitor.Location = new System.Drawing.Point(77, 137);
+            this.botonIniciarMonitor.Location = new System.Drawing.Point(174, 138);
             this.botonIniciarMonitor.Name = "botonIniciarMonitor";
             this.botonIniciarMonitor.Size = new System.Drawing.Size(34, 32);
             this.botonIniciarMonitor.TabIndex = 28;
@@ -148,7 +139,7 @@ namespace capapresentacion
             this.botonApagar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.botonApagar.FlatAppearance.BorderSize = 0;
             this.botonApagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.botonApagar.Location = new System.Drawing.Point(186, 136);
+            this.botonApagar.Location = new System.Drawing.Point(283, 137);
             this.botonApagar.Name = "botonApagar";
             this.botonApagar.Size = new System.Drawing.Size(41, 32);
             this.botonApagar.TabIndex = 29;
@@ -159,11 +150,20 @@ namespace capapresentacion
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(36, 146);
+            this.label1.Location = new System.Drawing.Point(133, 147);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 30;
             this.label1.Text = "Iniciar";
+            // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "Seleccionar";
+            this.Seleccionar.MinimumWidth = 2;
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.ReadOnly = true;
+            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FrmProyecto
             // 
@@ -177,7 +177,7 @@ namespace capapresentacion
             this.Controls.Add(this.label_añadir);
             this.Controls.Add(this.panelRecuadro);
             this.Controls.Add(this.btnNuevo);
-            this.Controls.Add(this.cbEliminar);
+            this.Controls.Add(this.cbCheckAll);
             this.Controls.Add(this.txtBuscarProyecto);
             this.Name = "FrmProyecto";
             this.Text = "FrmProyecto";
@@ -193,12 +193,12 @@ namespace capapresentacion
         private System.Windows.Forms.Label label_añadir;
         private System.Windows.Forms.Panel panelRecuadro;
         private System.Windows.Forms.DataGridView dataListProyectos;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.CheckBox cbEliminar;
+        private System.Windows.Forms.CheckBox cbCheckAll;
         private System.Windows.Forms.TextBox txtBuscarProyecto;
         private System.Windows.Forms.Button botonIniciarMonitor;
         private System.Windows.Forms.Button botonApagar;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
     }
 }
