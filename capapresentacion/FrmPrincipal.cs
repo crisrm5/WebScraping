@@ -321,9 +321,10 @@ private void quitarBordes()
         private void Tareas_Click(object sender, EventArgs e)
         {
             ActivaBoton(sender, RGBColors.color6);
+            FrmScraper scraper = new FrmScraper();
             //FrmTarea tareas = new FrmTarea();
             //tareas.frmparent = this;
-            //AbrirFormulario(tareas);
+            AbrirFormulario(scraper);
             //AbrirFormulario(new FrmTarea());
         }
 

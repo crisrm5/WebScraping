@@ -66,6 +66,12 @@
     <Compile Include="FrmProyecto.Designer.cs">
       <DependentUpon>FrmProyecto.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmScraper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmScraper.Designer.cs">
+      <DependentUpon>FrmScraper.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmTarea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProyecto.resx">
       <DependentUpon>FrmProyecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmScraper.resx">
+      <DependentUpon>FrmScraper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTarea.resx">
       <DependentUpon>FrmTarea.cs</DependentUpon>

@@ -1,7 +1,7 @@
 ﻿
 namespace capapresentacion
 {
-    partial class FrmProyecto
+    partial class FrmScraper
     {
         /// <summary>
         /// Required designer variable.
@@ -29,20 +29,30 @@ namespace capapresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProyecto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmScraper));
+            this.label1 = new System.Windows.Forms.Label();
             this.label_añadir = new System.Windows.Forms.Label();
             this.panelRecuadro = new System.Windows.Forms.Panel();
-            this.dataListProyectos = new System.Windows.Forms.DataGridView();
+            this.dataListScraper = new System.Windows.Forms.DataGridView();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.cbCheckAll = new System.Windows.Forms.CheckBox();
             this.txtBuscarProyecto = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.botonApagar = new System.Windows.Forms.Button();
             this.botonIniciarMonitor = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.panelRecuadro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListProyectos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListScraper)).BeginInit();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(133, 147);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Iniciar";
             // 
             // label_añadir
             // 
@@ -51,37 +61,36 @@ namespace capapresentacion
             this.label_añadir.Location = new System.Drawing.Point(232, 147);
             this.label_añadir.Name = "label_añadir";
             this.label_añadir.Size = new System.Drawing.Size(45, 13);
-            this.label_añadir.TabIndex = 21;
+            this.label_añadir.TabIndex = 35;
             this.label_añadir.Text = "Detener";
             // 
             // panelRecuadro
             // 
             this.panelRecuadro.BackColor = System.Drawing.Color.Gold;
-            this.panelRecuadro.Controls.Add(this.dataListProyectos);
-            this.panelRecuadro.Location = new System.Drawing.Point(39, 180);
+            this.panelRecuadro.Controls.Add(this.dataListScraper);
+            this.panelRecuadro.Location = new System.Drawing.Point(39, 179);
             this.panelRecuadro.Name = "panelRecuadro";
             this.panelRecuadro.Size = new System.Drawing.Size(663, 282);
-            this.panelRecuadro.TabIndex = 20;
+            this.panelRecuadro.TabIndex = 34;
             // 
-            // dataListProyectos
+            // dataListScraper
             // 
-            this.dataListProyectos.AllowUserToAddRows = false;
-            this.dataListProyectos.AllowUserToDeleteRows = false;
-            this.dataListProyectos.AllowUserToOrderColumns = true;
-            this.dataListProyectos.BackgroundColor = System.Drawing.Color.White;
-            this.dataListProyectos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListProyectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataListScraper.AllowUserToAddRows = false;
+            this.dataListScraper.AllowUserToDeleteRows = false;
+            this.dataListScraper.AllowUserToOrderColumns = true;
+            this.dataListScraper.BackgroundColor = System.Drawing.Color.White;
+            this.dataListScraper.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListScraper.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar});
-            this.dataListProyectos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataListProyectos.Location = new System.Drawing.Point(0, 0);
-            this.dataListProyectos.Name = "dataListProyectos";
-            this.dataListProyectos.ReadOnly = true;
-            this.dataListProyectos.RowHeadersVisible = false;
-            this.dataListProyectos.RowHeadersWidth = 51;
-            this.dataListProyectos.Size = new System.Drawing.Size(663, 282);
-            this.dataListProyectos.TabIndex = 4;
-            this.dataListProyectos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListProyectos_CellContentClick_1);
-            this.dataListProyectos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListProyectos_CellDoubleClick);
+            this.dataListScraper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataListScraper.Location = new System.Drawing.Point(0, 0);
+            this.dataListScraper.Name = "dataListScraper";
+            this.dataListScraper.ReadOnly = true;
+            this.dataListScraper.RowHeadersVisible = false;
+            this.dataListScraper.RowHeadersWidth = 51;
+            this.dataListScraper.Size = new System.Drawing.Size(663, 282);
+            this.dataListScraper.TabIndex = 4;
+            this.dataListScraper.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListScraper_CellContentClick);
             // 
             // Seleccionar
             // 
@@ -99,7 +108,7 @@ namespace capapresentacion
             this.cbCheckAll.Location = new System.Drawing.Point(39, 147);
             this.cbCheckAll.Name = "cbCheckAll";
             this.cbCheckAll.Size = new System.Drawing.Size(70, 17);
-            this.cbCheckAll.TabIndex = 16;
+            this.cbCheckAll.TabIndex = 32;
             this.cbCheckAll.Text = "Check all";
             this.cbCheckAll.UseVisualStyleBackColor = true;
             this.cbCheckAll.CheckedChanged += new System.EventHandler(this.cbCheckAll_CheckedChanged);
@@ -110,18 +119,7 @@ namespace capapresentacion
             this.txtBuscarProyecto.Location = new System.Drawing.Point(39, 54);
             this.txtBuscarProyecto.Name = "txtBuscarProyecto";
             this.txtBuscarProyecto.Size = new System.Drawing.Size(663, 20);
-            this.txtBuscarProyecto.TabIndex = 14;
-            this.txtBuscarProyecto.TextChanged += new System.EventHandler(this.txtBuscarProyecto_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(133, 147);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Iniciar";
+            this.txtBuscarProyecto.TabIndex = 31;
             // 
             // botonApagar
             // 
@@ -133,7 +131,7 @@ namespace capapresentacion
             this.botonApagar.Location = new System.Drawing.Point(283, 137);
             this.botonApagar.Name = "botonApagar";
             this.botonApagar.Size = new System.Drawing.Size(41, 32);
-            this.botonApagar.TabIndex = 29;
+            this.botonApagar.TabIndex = 37;
             this.botonApagar.UseVisualStyleBackColor = false;
             this.botonApagar.Click += new System.EventHandler(this.botonApagar_Click);
             // 
@@ -147,7 +145,7 @@ namespace capapresentacion
             this.botonIniciarMonitor.Location = new System.Drawing.Point(174, 138);
             this.botonIniciarMonitor.Name = "botonIniciarMonitor";
             this.botonIniciarMonitor.Size = new System.Drawing.Size(34, 32);
-            this.botonIniciarMonitor.TabIndex = 28;
+            this.botonIniciarMonitor.TabIndex = 36;
             this.botonIniciarMonitor.UseVisualStyleBackColor = false;
             this.botonIniciarMonitor.Click += new System.EventHandler(this.botonIniciarMonitor_Click);
             // 
@@ -158,19 +156,18 @@ namespace capapresentacion
             this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Location = new System.Drawing.Point(667, 131);
+            this.btnNuevo.Location = new System.Drawing.Point(668, 99);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(0);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(26, 28);
-            this.btnNuevo.TabIndex = 19;
+            this.btnNuevo.TabIndex = 33;
             this.btnNuevo.UseVisualStyleBackColor = true;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // FrmProyecto
+            // FrmScraper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MidnightBlue;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(783, 488);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.botonApagar);
@@ -180,10 +177,11 @@ namespace capapresentacion
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.cbCheckAll);
             this.Controls.Add(this.txtBuscarProyecto);
-            this.Name = "FrmProyecto";
-            this.Text = "FrmProyecto";
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Name = "FrmScraper";
+            this.Text = "FrmScraper";
             this.panelRecuadro.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataListProyectos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListScraper)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,15 +189,15 @@ namespace capapresentacion
 
         #endregion
 
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button botonApagar;
+        private System.Windows.Forms.Button botonIniciarMonitor;
         private System.Windows.Forms.Label label_añadir;
         private System.Windows.Forms.Panel panelRecuadro;
-        private System.Windows.Forms.DataGridView dataListProyectos;
+        private System.Windows.Forms.DataGridView dataListScraper;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.CheckBox cbCheckAll;
         private System.Windows.Forms.TextBox txtBuscarProyecto;
-        private System.Windows.Forms.Button botonIniciarMonitor;
-        private System.Windows.Forms.Button botonApagar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
     }
 }

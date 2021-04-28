@@ -112,7 +112,7 @@ namespace capapresentacion
             this.Tareas.FlatAppearance.BorderSize = 0;
             this.Tareas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Tareas.ForeColor = System.Drawing.SystemColors.Control;
-            this.Tareas.IconChar = FontAwesome.Sharp.IconChar.List;
+            this.Tareas.IconChar = FontAwesome.Sharp.IconChar.Scroll;
             this.Tareas.IconColor = System.Drawing.Color.White;
             this.Tareas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Tareas.IconSize = 32;
@@ -122,7 +122,7 @@ namespace capapresentacion
             this.Tareas.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
             this.Tareas.Size = new System.Drawing.Size(200, 60);
             this.Tareas.TabIndex = 2;
-            this.Tareas.Text = "Tareas";
+            this.Tareas.Text = "Scrapers";
             this.Tareas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Tareas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Tareas.UseVisualStyleBackColor = true;

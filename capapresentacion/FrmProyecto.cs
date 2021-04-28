@@ -20,7 +20,7 @@ namespace capapresentacion
     public partial class FrmProyecto : Form
     {
         public FrmPrincipal frmparent;
-        public List<string> Mena = new List<string>();
+        public List<string> dataGridMonitores = new List<string>();
         //Process myProcess;
         List<(Process,string)> monitor = new List<(Process, string)>();
         //ArrayList<Process> monitor = new ArrayList<Process>();
@@ -44,24 +44,21 @@ namespace capapresentacion
         private void mostrarMonitores()
         {
             DirectoryInfo di = new DirectoryInfo(@"C:\Users\cromero\Desktop\Proyecto\WebScraping\Monitores");
-            Console.WriteLine("No search pattern returns:");
+            //Console.WriteLine("No search pattern returns:");
             DataTable dt = new DataTable();
+            
             foreach (var fi in di.GetFiles())
             {
                 System.IO.Path.GetFullPath(Application.ExecutablePath);
                 //monitores.Append(fi.Name);
-                Mena.Add(fi.Name);
+                dataGridMonitores.Add(fi.Name);
                 Console.WriteLine(fi.Name);
             }
 
-            foreach (var fi in di.EnumerateFiles("*2*"))
-            {
-                Console.WriteLine(fi.Name);
-            }
 
-            var result = Mena.Select(s => new { value = s }).ToList();
+            var result = dataGridMonitores.Select(s => new { value = s }).ToList();
             dataListProyectos.DataSource = result;
-
+            dataListProyectos.Columns[1].HeaderText = "Monitor";
         }
 
         private void mensajeok(string mensaje)
@@ -147,7 +144,7 @@ namespace capapresentacion
         }
 
         private void dataListProyectos_CellDoubleClick(object sender, EventArgs e)
-        {
+        {/*
             try
             {
                 FrmDetalleProyecto detalleProyecto = new FrmDetalleProyecto();
@@ -174,7 +171,7 @@ namespace capapresentacion
             catch (Exception)
             {
                 MessageBox.Show("Error en el evento Double click ", "Error en el evento Double click ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         /*PROCEDURES*/
@@ -188,7 +185,14 @@ namespace capapresentacion
 
         private void txtBuscarProyecto_TextChanged(object sender, EventArgs e)
         {
-            this.buscarProyecto(this.txtBuscarProyecto.Text);
+            //this.buscarProyecto(this.txtBuscarProyecto.Text);
+
+
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dataListProyectos.DataSource;
+            bs.Filter = string.Format("CONVERT(" + dataListProyectos.Columns[1].DataPropertyName + ", System.String) like '%" + txtBuscarProyecto.Text.Replace("'", "''") + "%'");
+            dataListProyectos.DataSource = bs;
+            dataListProyectos.Refresh();
         }
 
         private void botonIniciarMonitor_Click(object sender, EventArgs e)
@@ -367,31 +371,22 @@ namespace capapresentacion
             
                 if (this.cbCheckAll.Checked)
                 {
-                //Console.WriteLine();
 
                 for (int i=0;i<dataListProyectos.Rows.Count;i++)
                 {
                     DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[i].Cells["Seleccionar"];
-                    chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
+                    chkeliminar.Value = true;
                 }
-                /*
-                if (e.ColumnIndex == dataListProyectos.Columns["Seleccionar"].Index)
-                {
-                    DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[e.RowIndex].Cells["Seleccionar"];
-                    chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
-                }*/
-                //this.dataListProyectos.Columns[0].Visible = true;
-                //this.botonIniciarMonitor.Enabled = true;
+
             }
                 else
                 {
                 for (int i = 0; i < dataListProyectos.Rows.Count; i++)
                 {
                     DataGridViewCheckBoxCell chkeliminar = (DataGridViewCheckBoxCell)dataListProyectos.Rows[i].Cells["Seleccionar"];
-                    chkeliminar.Value = !Convert.ToBoolean(chkeliminar.Value);
+                    chkeliminar.Value = false;
                 }
-                //this.dataListProyectos.Columns[0].Visible = false;
-                // this.botonIniciarMonitor.Enabled = false;
+
             }
             
         }
