@@ -52,49 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DInformacionProyecto.cs" />
-    <Compile Include="DInformacionTarea.cs" />
-    <Compile Include="FrmDetalleTiempos.cs">
+    <Compile Include="FrmMonitor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDetalleTiempos.Designer.cs">
-      <DependentUpon>FrmDetalleTiempos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmProyecto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmProyecto.Designer.cs">
-      <DependentUpon>FrmProyecto.cs</DependentUpon>
+    <Compile Include="FrmMonitor.Designer.cs">
+      <DependentUpon>FrmMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmScraper.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmScraper.Designer.cs">
       <DependentUpon>FrmScraper.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTarea.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTarea.Designer.cs">
-      <DependentUpon>FrmTarea.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTiempos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTiempos.Designer.cs">
-      <DependentUpon>FrmTiempos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmDetalleProyecto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmDetalleProyecto.Designer.cs">
-      <DependentUpon>FrmDetalleProyecto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmDetalleTarea.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmDetalleTarea.Designer.cs">
-      <DependentUpon>FrmDetalleTarea.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -112,36 +80,11 @@
     <Compile Include="StaticScraper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\capadatos\capadatos.csproj">
-      <Project>{67A60693-E78F-465B-81F4-6278CE35E0D4}</Project>
-      <Name>capadatos</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\capanegocio\capanegocio.csproj">
-      <Project>{5e2b562c-8869-4f4f-8aa5-72fb698b1026}</Project>
-      <Name>capanegocio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="FrmDetalleTiempos.resx">
-      <DependentUpon>FrmDetalleTiempos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmProyecto.resx">
-      <DependentUpon>FrmProyecto.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMonitor.resx">
+      <DependentUpon>FrmMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmScraper.resx">
       <DependentUpon>FrmScraper.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTarea.resx">
-      <DependentUpon>FrmTarea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTiempos.resx">
-      <DependentUpon>FrmTiempos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmDetalleProyecto.resx">
-      <DependentUpon>FrmDetalleProyecto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmDetalleTarea.resx">
-      <DependentUpon>FrmDetalleTarea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>

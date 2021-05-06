@@ -11,17 +11,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using capadatos;
-using capanegocio;
 
 
 namespace capapresentacion
 {
-    public partial class FrmProyecto : Form
+    public partial class FrmMonitor : Form
     {
         public FrmPrincipal frmparent;
         public List<string> dataGridArrayMonitores = new List<string>();
-        public FrmProyecto()
+        public FrmMonitor()
         {
             InitializeComponent();
             botonIniciarMonitor.FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
@@ -64,39 +62,7 @@ namespace capapresentacion
             dataListProyectos.Columns[1].HeaderText = "Monitor";
         }
 
-        private void mensajeok(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
-        private void mensajeerror(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        private void cerrarX(object sender, EventArgs e)
-        {
-            System.Windows.Forms.Application.ExitThread();
-        }
-
-        private void FrmPrincipal_Load(object sender, EventArgs e)
-        {
-            this.FormClosed += new FormClosedEventHandler(cerrarX);
-        }
-
-        private void FrmPrincipal_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        public void mostrarproyectos()
-        {
-            this.dataListProyectos.DataSource = NProyecto.mostrarproyectos();
-            this.ocultarcolumnas();
-            this.botonIniciarMonitor.Visible = true;
-            // this.lblTotal.Text = "Número de proyectos: " + Convert.ToString(dataListProyectos.Rows.Count);
-        }
 
         private void ocultarcolumnas()
         {
@@ -182,11 +148,6 @@ namespace capapresentacion
         /*PROCEDURES*/
 
 
-        private void buscarProyecto(string texto)
-        {
-            this.dataListProyectos.DataSource = NProyecto.buscarproyecto(texto);
-            this.ocultarcolumnas();
-        }
 
         private void txtBuscarProyecto_TextChanged(object sender, EventArgs e)
         {
@@ -208,14 +169,11 @@ namespace capapresentacion
                 opcion = MessageBox.Show("¿Desea continuar?", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (opcion == DialogResult.OK)
                 {
-                    int aux = 0;
                     string nombre;
-                    string rpta = "";
                     foreach (DataGridViewRow row in dataListProyectos.Rows)
                     {
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
-                            aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
 
@@ -267,14 +225,12 @@ namespace capapresentacion
                 opcion = MessageBox.Show("¿Desea continuar?", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (opcion == DialogResult.OK)
                 {
-                    int aux = 0;
                     string nombre;
 
                     foreach (DataGridViewRow row in dataListProyectos.Rows)
                     {
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
-                            aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
 
@@ -300,7 +256,6 @@ namespace capapresentacion
                             }
                             else
                             {
-                                aux = 1;
 
                                 nombre = Convert.ToString(row.Cells[1].Value);
                                 ruta = "";

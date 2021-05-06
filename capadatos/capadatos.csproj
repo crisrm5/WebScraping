@@ -46,8 +46,6 @@
     <Compile Include="DProyecto.cs" />
     <Compile Include="DTarea.cs" />
     <Compile Include="DProyectoDatos.cs" />
-    <Compile Include="DTareasDatos.cs" />
-    <Compile Include="DTiempo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

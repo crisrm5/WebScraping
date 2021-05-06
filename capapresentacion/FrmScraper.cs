@@ -95,14 +95,11 @@ namespace capapresentacion
                 opcion = MessageBox.Show("¿Desea continuar?", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (opcion == DialogResult.OK)
                 {
-                    int aux = 0;
                     string nombre;
-                    string rpta = "";
                     foreach (DataGridViewRow row in dataListScraper.Rows)
                     {
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
-                            aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
 
@@ -156,14 +153,12 @@ namespace capapresentacion
                 opcion = MessageBox.Show("¿Desea continuar?", "Eliminar Proyecto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (opcion == DialogResult.OK)
                 {
-                    int aux = 0;
                     string nombre;
 
                     foreach (DataGridViewRow row in dataListScraper.Rows)
                     {
                         if (Convert.ToBoolean(row.Cells[0].Value))
                         {
-                            aux = 1;
 
                             nombre = Convert.ToString(row.Cells[1].Value);
 
@@ -189,7 +184,6 @@ namespace capapresentacion
                             }
                             else
                             {
-                                aux = 1;
 
                                 nombre = Convert.ToString(row.Cells[1].Value);
                                 ruta = "";

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace capapresentacion
 {
@@ -11,5 +12,6 @@ namespace capapresentacion
     {
         public static List<(Process, string)> monitor = new List<(Process, string)>();
         public static string rutaManual = "";
+
     }
 }

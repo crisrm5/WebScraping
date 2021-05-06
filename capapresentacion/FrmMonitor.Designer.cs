@@ -1,7 +1,7 @@
 ﻿
 namespace capapresentacion
 {
-    partial class FrmProyecto
+    partial class FrmMonitor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace capapresentacion
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProyecto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMonitor));
             this.label_añadir = new System.Windows.Forms.Label();
             this.panelRecuadro = new System.Windows.Forms.Panel();
             this.dataListProyectos = new System.Windows.Forms.DataGridView();

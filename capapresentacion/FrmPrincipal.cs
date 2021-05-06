@@ -10,21 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FontAwesome.Sharp;
 
-using capanegocio;
-using capadatos;
-
 namespace capapresentacion
 {
     public partial class FrmPrincipal : Form
     {
         private IconButton botonActual;
         private Panel panelIzquierdo;
-        private string nombreusuario;
 
-
-       // private DLogin login;
-        public string Nombreusuario { get => nombreusuario; set => nombreusuario = value; }
-        //public DLogin Login { get => login; set => login = value; }
 
 
 
@@ -44,7 +36,6 @@ namespace capapresentacion
             panelMenu.BackColor = Color.FromArgb(31, 30, 68);
             Proyectos.BackColor= Color.FromArgb(31, 30, 68); 
             Tareas.BackColor= Color.FromArgb(31, 30, 68); 
-            Tiempos.BackColor= Color.FromArgb(31, 30, 68);
             panelTitulo.BackColor = Color.FromArgb(26, 25, 62);
             iconoFormularioActual.BackColor = Color.FromArgb(26, 25, 62);
             panelFormulario.BackColor = Color.FromArgb(34, 33, 74);
@@ -74,16 +65,6 @@ namespace capapresentacion
 
         }
 
-        public void informacionLogin(string login,string bd)
-        {
-            Console.WriteLine(login);
-            txtnombreusuario.Text = login;
-        }
-
-        public void cierraForm()
-        {
-            this.Hide();
-        }
         public void ActivaBoton(object senderBtn, Color color)
         {
             if (senderBtn != null)
@@ -124,29 +105,14 @@ namespace capapresentacion
         }
 
 
-        private void mensajeok(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void mensajeerror(string mensaje)
-        {
-            MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            //mostrarproyectos();
-            
             //this.FormClosed += new FormClosedEventHandler(cerrarX);
         }
 
 
 
-        internal void enviaDatos(String texto)
-        {
-            
-        }
 
 
 
@@ -163,61 +129,13 @@ namespace capapresentacion
         /*fin del drag*/
 
 
-        private void Proyectos_Click(object sender, EventArgs e)
-        {
-            ActivaBoton(sender, RGBColors.color5);
-            FrmProyecto proyecto = new FrmProyecto();
-            proyecto.frmparent = this;
-            AbrirFormulario(proyecto);
-            
-            
-        }
-
-        public void lanzarNuevoElemento(Form formulario) {
-            AbrirFormulario(formulario);
-        }
-
-        private void Tareas_Click(object sender, EventArgs e)
-        {
-            ActivaBoton(sender, RGBColors.color6);
-            FrmScraper scraper = new FrmScraper();
-            //FrmTarea tareas = new FrmTarea();
-            //tareas.frmparent = this;
-            AbrirFormulario(scraper);
-            //AbrirFormulario(new FrmTarea());
-        }
-
-
-        private void Tiempos_Click(object sender, EventArgs e)
-        {
-            ActivaBoton(sender, RGBColors.color3);
-           // FrmTiempos tiempos = new FrmTiempos();
-            //tiempos.frmparent = this;
-            //AbrirFormulario(tiempos);
-
-        }
-
-        private void panelTitulo_Paint(object sender, PaintEventArgs e)
-        {
-            Console.WriteLine("Entrando en panelTitulo");
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            Console.WriteLine("Entrando en panel1");
-        }
-
 
         private void cerrar_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        private void detalleProyectos_Click_1(object sender, EventArgs e)
-        {
-            ActivaBoton(sender, RGBColors.color1);
-            AbrirFormulario(new FrmDetalleProyecto());
-        }
+
 
         private void miminizar_Click(object sender, EventArgs e)
         {
@@ -227,6 +145,19 @@ namespace capapresentacion
             }
         }
 
+        private void Monitor_Click(object sender, EventArgs e)
+        {
+            ActivaBoton(sender, RGBColors.color5);
+            FrmMonitor monitor = new FrmMonitor();
+            monitor.frmparent = this;
+            AbrirFormulario(monitor);
+        }
 
+        private void Scraper_Click(object sender, EventArgs e)
+        {
+            ActivaBoton(sender, RGBColors.color6);
+            FrmScraper scraper = new FrmScraper();
+            AbrirFormulario(scraper);
+        }
     }
 }
