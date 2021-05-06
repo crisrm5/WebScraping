@@ -229,7 +229,7 @@ namespace capapresentacion
                                     ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Monitores\\" + fi.Name;
 
                                     StaticMonitor.monitor.Add((Process.Start(ruta), ruta));
-
+                                    row.DefaultCellStyle.BackColor = Color.PaleGreen;
                                 }
                             }
                             else
@@ -239,7 +239,7 @@ namespace capapresentacion
                                 {
                                     ruta = @StaticMonitor.rutaManual + "/" + fi.Name;
                                     StaticMonitor.monitor.Add((Process.Start(ruta), ruta));
-
+                                    row.DefaultCellStyle.BackColor = Color.PaleGreen;
                                 }
                             }
 
@@ -292,6 +292,7 @@ namespace capapresentacion
                                         if (StaticMonitor.monitor[i].Item2.Equals(ruta))
                                         {
                                             StaticMonitor.monitor[i].Item1.CloseMainWindow();
+                                            row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
                                         };
                                     }
                                 }
@@ -316,6 +317,7 @@ namespace capapresentacion
                                             if (StaticMonitor.monitor[i].Item2.Equals(ruta))
                                             {
                                                 StaticMonitor.monitor[i].Item1.CloseMainWindow();
+                                                row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
                                             };
                                         }
                                     }

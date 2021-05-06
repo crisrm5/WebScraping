@@ -116,6 +116,7 @@ namespace capapresentacion
                                     ruta = "C:\\Users\\cromero\\Desktop\\Proyecto\\WebScraping\\Scrapers\\" + fi.Name;
 
                                     StaticScraper.monitor.Add((Process.Start(ruta), ruta));
+                                    row.DefaultCellStyle.BackColor = Color.PaleGreen;
 
                                 }
                             }
@@ -126,6 +127,7 @@ namespace capapresentacion
                                 {
                                     ruta = @StaticScraper.rutaManual + "/" + fi.Name;
                                     StaticScraper.monitor.Add((Process.Start(ruta), ruta));
+                                    row.DefaultCellStyle.BackColor = Color.PaleGreen;
 
                                 }
                             }
@@ -179,6 +181,7 @@ namespace capapresentacion
                                         if (StaticScraper.monitor[i].Item2.Equals(ruta))
                                         {
                                             StaticScraper.monitor[i].Item1.CloseMainWindow();
+                                            row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
                                         };
                                     }
                                 }
@@ -203,6 +206,7 @@ namespace capapresentacion
                                             if (StaticScraper.monitor[i].Item2.Equals(ruta))
                                             {
                                                 StaticScraper.monitor[i].Item1.CloseMainWindow();
+                                                row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
                                             };
                                         }
                                     }
